@@ -1,34 +1,34 @@
-#include<iostream>
-using namespace std;
-class hero{
+#include <iostream>
+#include <ctime>
 
-    char level;
-    int health;
-    int gethealth(){
-        return health;
+int main() {
+    // Seed the random number generator with the current time
+    unsigned int seed = static_cast<unsigned int>(time(NULL));
+    srand(seed);
+
+    // Generate a random number between 1 and 100
+    int secretNumber = rand() % 100 + 1;
+    int userGuess;
+    int attempts = 0;
+
+    std::cout << "Welcome to the Guess the Number game!" << std::endl;
+    std::cout << "I have selected a random number between 1 and 100." << std::endl;
+
+    while (true) {
+        std::cout << "Guess the number: ";
+        std::cin >> userGuess;
+        attempts++;
+
+        if (userGuess == secretNumber) {
+            std::cout << "Congratulations! You guessed the correct number " << secretNumber << " in " << attempts << " attempts." << std::endl;
+            break;
+        } else if (userGuess < secretNumber) {
+            std::cout << "Too low. Try again." << std::endl;
+        } else {
+            std::cout << "Too high. Try again." << std::endl;
+        }
     }
-    char getlevel()
-    {
-        return level;
-    }
-    void sethealth(int h)
-    {
-        health=h;
-    }
-    void setlevel(char a)
-    {
-        level=a;
-    }
-    
-};
-int main()
-{
-    hero h1;
-    h1.sethealth(79);
-    h1.setlevel(a);
-    
-    
-    cout<<"health is  "<<h1.gethealth<<endl;
-    cout<<"level is  "<<h1.getlevel<<endl;
+   
+
     return 0;
 }
